@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-int main() {
+int main(){
     int number;
     float num1, num2, addition, subtraction;
     bool checkerForFirstInput, checkerForSecondInput;
@@ -28,11 +28,6 @@ int main() {
             cout << "Please type the first number to addition: ";
             cin >> num1;
             checkerForFirstInput = cin.fail();
-            cout << "Please type the second number to addition: ";
-            cin.clear();
-            cin.ignore(1000, '\n');
-            cin >> num2;
-            checkerForSecondInput = cin.fail();
             do
             {
                 if (checkerForFirstInput==1){
@@ -41,21 +36,25 @@ int main() {
                     cin.ignore(1000, '\n');
                     cin >> num1;
                     checkerForFirstInput = cin.fail();
-                    if (checkerForFirstInput==0){
-                        break;
-                    }
                 }
+            } while (checkerForFirstInput==1);
+            
+            cout << "Please type the second number to addition: ";
+            cin.clear();
+            cin.ignore(1000, '\n');
+            cin >> num2;
+            checkerForSecondInput = cin.fail();
+            do
+            {
                 if (checkerForSecondInput==1){
                     cout << "Please enter a valid number for second number: ";
                     cin.clear(); 
                     cin.ignore(1000, '\n');
                     cin >> num2;
                     checkerForSecondInput = cin.fail();
-                    if (checkerForSecondInput==0){
-                        break;
-                    }
                 }
-            } while (!(checkerForFirstInput==0 && checkerForSecondInput==0));
+
+            } while (checkerForSecondInput==1);
             addition=(num1+num2);
             cout << "The solution of addition is: " << addition;
             break;
@@ -64,11 +63,6 @@ int main() {
             cout << "Please type the first number to subtraction: ";
             cin >> num1;
             checkerForFirstInput = cin.fail();
-            cout << "Please type the second number to subtraction: ";
-            cin.clear(); 
-            cin.ignore(1000, '\n');
-            cin >> num2;
-            checkerForSecondInput = cin.fail();
             do
             {
                 if (checkerForFirstInput){
@@ -78,17 +72,27 @@ int main() {
                     cin >> num1;
                     checkerForFirstInput = cin.fail();
                 }
-                if (checkerForSecondInput){
+            } while (checkerForFirstInput==1);
+            
+            cout << "Please type the second number to subtraction: ";
+            cin.clear(); 
+            cin.ignore(1000, '\n');
+            cin >> num2;
+            checkerForSecondInput = cin.fail();
+            do
+            {
+                if (checkerForSecondInput==1){
                     cout << "Please enter a valid number for second number: ";
-                    cin.clear();
+                    cin.clear(); 
                     cin.ignore(1000, '\n');
                     cin >> num2;
                     checkerForSecondInput = cin.fail();
                 }
-            } while (!(checkerForFirstInput==0 && checkerForSecondInput==0));
+
+            } while (checkerForSecondInput==1);
             subtraction=(num1-num2);
             cout << "The solution of subtraction is: " << subtraction;            
             break;
-    return 0;
-}
+            }
+return 0;
 }
