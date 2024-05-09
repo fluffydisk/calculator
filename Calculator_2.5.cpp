@@ -27,10 +27,18 @@ int getNumbersForCalculation(){
         cout << "Please provide a number for calculation: ";
         clearLastInput();
         cin >> firstNum;
-        while (cin.fail()){
-            cout << "Please provide a valid number for calculation: ";
-            clearLastInput();
-            cin >> firstNum;
+        while (cin.fail() || (numberForCalculation == 6 && firstNum < 0)){
+            if (numberForCalculation == 6 && firstNum < 0){
+                cout << "Rooting by a number under 0 is undefined, please enter a defined number: ";
+                clearLastInput();
+                cin >> firstNum;                     
+            }
+            else{
+                cout << "Please provide a valid number for calculation: ";
+                clearLastInput();
+                cin >> firstNum;                
+            }
+
         }
     }
     else{
@@ -68,7 +76,7 @@ int calculateARoot(){
     if (((resultRoot * resultRoot)-firstNum) > (firstNum-((resultRoot-1)*(resultRoot-1)))){
         resultRoot--;
     }
-    for (int x=0; x<10; x++){
+    for (int x=0; x<100; x++){
         resultRoot=(resultRoot+(firstNum/resultRoot))/2;
     }
     return 0;
@@ -106,7 +114,7 @@ int main(){
         }            
         cout << "Do you want to continue yes(1) or no(0): ";
         cin  >> endOrContinue;
-        while(!(endOrContinue==1 || endOrContinue==0)){
+        while(cin.fail() || !(endOrContinue==1 || endOrContinue==0)){
             cout <<"Do you want to continue yes(1) or no(0): ";
             clearLastInput();
             cin >> endOrContinue;
